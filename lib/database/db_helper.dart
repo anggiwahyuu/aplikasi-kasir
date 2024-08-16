@@ -53,27 +53,27 @@ class DbHelper {
   // CRUD Item
 
   Future<List<Map<String, dynamic>>> selectItem() async {
-    Database db = await this.initDb();
+    Database db = await initDb();
     var mapListItem = await db.query('items', orderBy: 'itemName');
 
     return mapListItem;
   }
 
   Future<int> insertItem(Items object) async {
-    Database db = await this.initDb();
+    Database db = await initDb();
     int count = await db.insert('items', object.toMap());
     return count;
   }
 
   Future<int> updateItem(Items object) async {
-    Database db = await this.initDb();
+    Database db = await initDb();
     int count = await db.update('items', object.toMap(),
         where: 'itemID=?', whereArgs: [object.itemID]);
     return count;
   }
 
   Future<int> deleteItem(Items object) async {
-    Database db = await this.initDb();
+    Database db = await initDb();
     int count =
         await db.delete('items', where: 'itemID=?', whereArgs: [object.itemID]);
 
@@ -90,7 +90,7 @@ class DbHelper {
   //CRUD History Transaction
 
   Future<List<Map<String, dynamic>>> selectHistory() async {
-    Database db = await this.initDb();
+    Database db = await initDb();
     var mapListHistory =
         await db.query('history_transaction', orderBy: 'dateTime');
 
@@ -98,20 +98,20 @@ class DbHelper {
   }
 
   Future<int> insertHistory(HistoryTransaction object) async {
-    Database db = await this.initDb();
+    Database db = await initDb();
     int count = await db.insert('history_transaction', object.toMap());
     return count;
   }
 
   Future<int> updateHistory(HistoryTransaction object) async {
-    Database db = await this.initDb();
+    Database db = await initDb();
     int count = await db.update('history_transaction', object.toMap(),
         where: 'transactionID=?', whereArgs: [object.transactionID]);
     return count;
   }
 
   Future<int> deleteHistory(HistoryTransaction object) async {
-    Database db = await this.initDb();
+    Database db = await initDb();
     int count = await db.delete('history_transaction',
         where: 'transactionID=?', whereArgs: [object.transactionID]);
 
@@ -128,7 +128,7 @@ class DbHelper {
   // CRUD Transaction Details
 
   Future<List<Map<String, dynamic>>> selectDetails() async {
-    Database db = await this.initDb();
+    Database db = await initDb();
     var mapListDetails =
         await db.query('transaction_details', orderBy: 'historyID');
 
@@ -136,20 +136,20 @@ class DbHelper {
   }
 
   Future<int> insertDetails(TransactionDetails object) async {
-    Database db = await this.initDb();
+    Database db = await initDb();
     int count = await db.insert('transaction_details', object.toMap());
     return count;
   }
 
   Future<int> updateDetails(TransactionDetails object) async {
-    Database db = await this.initDb();
+    Database db = await initDb();
     int count = await db.update('transaction_details', object.toMap(),
         where: 'detailsID=?', whereArgs: [object.detailsID]);
     return count;
   }
 
   Future<int> deleteDetails(TransactionDetails object) async {
-    Database db = await this.initDb();
+    Database db = await initDb();
     int count = await db.delete('transaction_details',
         where: 'historyID=?', whereArgs: [object.historyID]);
 

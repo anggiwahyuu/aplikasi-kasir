@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
 
-  Widget createCardGrid(String image, String menu) {
+  Widget createCardGrid(String image, String menu, String route) {
     return Card(
       color: Colors.white,
       elevation: 5,
@@ -24,7 +25,9 @@ class MyHomePage extends StatelessWidget {
             ),
           ),
         ),
-        onTap: () {},
+        onTap: () {
+          Get.toNamed(route);
+        },
       ),
     );
   }
@@ -52,10 +55,14 @@ class MyHomePage extends StatelessWidget {
                   mainAxisSpacing: 10,
                   crossAxisSpacing: 10,
                   children: [
-                    createCardGrid("shopping-cart.png", "Daftar Barang"),
-                    createCardGrid("3d-cash-money.png", "Laporan Keuangan"),
-                    createCardGrid("just-2020934_1280.png", "Kalkulator"),
-                    createCardGrid("book-1296045_1280.png", "Riwayat Penjualan")
+                    createCardGrid(
+                        "shopping-cart.png", "Daftar Barang", '/list_item'),
+                    createCardGrid("3d-cash-money.png", "Laporan Keuangan",
+                        '/finance_report'),
+                    createCardGrid(
+                        "just-2020934_1280.png", "Kalkulator", '/calculator'),
+                    createCardGrid("book-1296045_1280.png", "Transaksi",
+                        '/history_transaction')
                   ],
                 ),
               ),
